@@ -25,7 +25,7 @@ const CreateUser: FC<CreateUserProps> = ({}) => {
     return () => {
       document.removeEventListener('mousedown', validateClick)
     }
-  }, [])
+  }, [inputArea])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -50,9 +50,33 @@ const CreateUser: FC<CreateUserProps> = ({}) => {
   }
   return (
     <div ref={inputArea}>
-      <TextField fullWidth label="name" name="name" margin="normal" onChange={handleInputChange}></TextField>
-      <TextField fullWidth label="email" name="email" margin="normal" onChange={handleInputChange}></TextField>
-      <TextField fullWidth label="phone" name="phone" margin="normal" onChange={handleInputChange}></TextField>
+      <TextField
+        fullWidth
+        label="name"
+        name="name"
+        value={user.name}
+        margin="normal"
+        onChange={handleInputChange}
+        autoComplete="name"
+      ></TextField>
+      <TextField
+        fullWidth
+        label="email"
+        name="email"
+        value={user.email}
+        margin="normal"
+        onChange={handleInputChange}
+        autoComplete="email"
+      ></TextField>
+      <TextField
+        fullWidth
+        label="phone"
+        name="phone"
+        value={user.phone}
+        margin="normal"
+        onChange={handleInputChange}
+        autoComplete="tel"
+      ></TextField>
       <Button onClick={onSubmit} variant="contained" color="info" sx={{ mt: 3 }}>
         {user.hasOwnProperty('date') ? 'Actualizar' : 'Crear usuario'}
       </Button>

@@ -26,7 +26,17 @@ const User: FC<UserI> = ({ id, name, email, date, phone }) => {
       style={{ backgroundColor: '#2196f3', color: '#fff' }}
       secondaryAction={
         <>
-          <IconButton onClick={() => setUser({ name: '', email: '', phone: '' })}>
+          <IconButton
+            onClick={() => {
+              setUser({
+                id: id!,
+                date: date!,
+                name: name ? name : '',
+                email: email ? email : '',
+                phone: phone ? phone : '',
+              })
+            }}
+          >
             <EditIcon />
           </IconButton>
           <IconButton onClick={deleteUser}>
